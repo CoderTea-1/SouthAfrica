@@ -12,7 +12,6 @@ export default function App() {
   return (
     <Router>
       <div className="nav-and-content">
-        <Analytics />
         <Switch>
           <Route path={`/test/:testId`}>
             <ImplicitBiasTest />
