@@ -6,6 +6,7 @@ import ImplicitBiasTest from "./containers/ImplicitBiasTest";
 import DemographicInfo from "./containers/DemographicInfo";
 import "./scss/global.scss";
 import DemographicForm from "./containers/DemographicForm";
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App() {
   return (
