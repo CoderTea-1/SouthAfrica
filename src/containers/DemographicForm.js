@@ -196,8 +196,8 @@ const DemographicForm = () => {
               <br /> You may decline to answer any or all questions and you may
               terminate your involvement at any time if you choose.
               <br />
-              <strong>BENEFITS</strong> There is a lottery to win R1500. To
-              enter, you need to put your WhatsApp number above. We hope that
+              <strong>BENEFITS</strong> 
+              <br /> We hope that
               the information obtained from this study may give insight into
               attitudes towards different immigrant groups.
               <br />
