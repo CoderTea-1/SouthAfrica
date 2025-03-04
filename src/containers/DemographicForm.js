@@ -172,7 +172,7 @@ const DemographicForm = () => {
               <br /> 3710 Del Mar Heights Rd, San Diego, California, United
               States 92130
               <br /> +1 (619) 714 - 0293
-              <br /> im.darminator@gmail.com
+              <br /> saresearch25@gmail.com
               <br />
               <strong>PURPOSE OF STUDY</strong>
               <br /> You are being asked to take part in a research study.
@@ -188,7 +188,7 @@ const DemographicForm = () => {
               <br /> This study is optional and can be quit at any time. Any
               data from incomplete surveys are not saved and will not be used in
               the final paper. This study will ask optional demographic
-              questions, then will move on to seven questions where the
+              questions, then will move on to questions where the
               respondent will categorize certain words as either foreigner or
               South African, and good or bad person.
               <br />
