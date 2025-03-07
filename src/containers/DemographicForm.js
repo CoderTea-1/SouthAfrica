@@ -114,16 +114,27 @@ const DemographicForm = () => {
           <div className="card-content">
             <label>What is your highest level of education?</label>
             <select
-              className="browser-default styled-select"
               name="education"
               value={formData.education}
               onChange={handleChange}
+              className="browser-default styled-select"
             >
               <option value="">Select...</option>
-              <option value="highschool">High School</option>
-              <option value="bachelors">Bachelor's Degree</option>
-              <option value="masters">Master's Degree</option>
-              <option value="doctorate">Doctorate</option>
+              {[
+                "No Education",
+                "Primary School",
+                "Secondary School",
+                "Vocational School",
+                "High School",
+                "Associate Degree",
+                "Bachelor's Degree",
+                "Master's Degree",
+                "Doctoral Degree",
+              ].map((edu) => (
+                <option key={edu} value={edu}>
+                  {edu}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -139,6 +150,79 @@ const DemographicForm = () => {
               value={formData.city}
               onChange={handleChange}
             />
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-content">
+            <label>Ethnicity</label>
+            <select
+              name="ethnicity"
+              value={formData.ethnicity}
+              onChange={handleChange}
+              className="browser-default styled-select"
+            >
+              <option value="">Select...</option>
+              {[
+                "White South African",
+                "Black South African",
+                "Colored South African",
+                "Asian South African",
+                "Congolese",
+                "Kenyans",
+                "Mozambicans",
+                "Nigerians",
+                "Somalian",
+                "Zimbabwean",
+                "Indian",
+                "Bangladeshi",
+                "Italian",
+                "British",
+              ].map((eth) => (
+                <option key={eth} value={eth}>
+                  {eth}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card-content">
+            <label>Political Affiliation</label>
+            <select
+              name="politicalAffiliation"
+              value={formData.politicalAffiliation}
+              onChange={handleChange}
+              className="browser-default styled-select"
+            >
+              <option value="">Select...</option>
+              {[
+                "Did not vote",
+                "ACTIONSA",
+                "ACDP",
+                "ANC",
+                "ATM",
+                "ALJAMA",
+                "BOSA",
+                "DA",
+                "EFF",
+                "VF+",
+                "GOOD",
+                "IFP",
+                "CCC",
+                "PAC",
+                "PA",
+                "RISE",
+                "MK",
+                "UAT",
+                "UDM",
+              ].map((party) => (
+                <option key={party} value={party}>
+                  {party}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
