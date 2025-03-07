@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { updateDemographicForm } from "../actions"; // Redux action
-import "../scss/DemographicForm.scss";
+import "../scss/DemographicForm.scss"; // Optional, make sure you have the SCSS file
 
 const DemographicForm = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ const DemographicForm = () => {
     income: "",
     consentProject: false,
     consentResearch: false,
+    otherGender: "", // Add a field for 'Other' gender input
   });
 
   const [errors, setErrors] = useState({});
@@ -25,21 +26,16 @@ const DemographicForm = () => {
   const validateInputs = () => {
     let tempErrors = {};
 
-    // Age validation (must be positive)
     if (formData.age && (isNaN(formData.age) || Number(formData.age) <= 0)) {
       tempErrors.age = "Age must be a positive number";
     }
 
-    // Income validation (must be positive)
-    if (
-      formData.income &&
-      (isNaN(formData.income) || Number(formData.income) < 0)
-    ) {
+    if (formData.income && (isNaN(formData.income) || Number(formData.income) < 0)) {
       tempErrors.income = "Income must be a positive number";
     }
 
     setErrors(tempErrors);
-    return Object.keys(tempErrors).length === 0; // Returns true if no errors
+    return Object.keys(tempErrors).length === 0;
   };
 
   const handleChange = (e) => {
@@ -47,7 +43,6 @@ const DemographicForm = () => {
 
     let newValue = type === "checkbox" ? checked : value;
 
-    // Remove non-numeric characters for Age and Income
     if (name === "age" || name === "income") {
       newValue = newValue.replace(/\D/g, "");
     }
@@ -61,14 +56,12 @@ const DemographicForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validateInputs()) return; // Stop if validation fails
+    if (!validateInputs()) return;
 
     console.log("Form Data Submitted:", formData);
 
-    // Dispatch form data to Redux
     dispatch(updateDemographicForm(formData));
 
-    // Navigate to the next page
     history.push("/test/power-happiness");
   };
 
@@ -91,6 +84,20 @@ const DemographicForm = () => {
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
+
+            {/* Show a textbox if "Other" is selected */}
+            {formData.gender === "other" && (
+              <div>
+                <label htmlFor="otherGender">Please specify:</label>
+                <input
+                  type="text"
+                  id="otherGender"
+                  name="otherGender"
+                  value={formData.otherGender}
+                  onChange={handleChange}
+                />
+              </div>
+            )}
           </div>
         </div>
 
@@ -153,6 +160,7 @@ const DemographicForm = () => {
           </div>
         </div>
 
+        {/* Ethnicity */}
         <div className="card">
           <div className="card-content">
             <label>Ethnicity</label>
@@ -187,6 +195,7 @@ const DemographicForm = () => {
           </div>
         </div>
 
+        {/* Political Affiliation */}
         <div className="card">
           <div className="card-content">
             <label>Political Affiliation</label>
@@ -244,90 +253,11 @@ const DemographicForm = () => {
           </div>
         </div>
 
+        {/* Consent Information */}
         <div className="card">
           <div className="card-content">
             <p style={{ textAlign: "justify" }}>
-              <br /> This is an investigation into attitudes surrounding
-              different immigrant groups in South Africa
-              <br />
-              <strong>PRINCIPAL INVESTIGATOR</strong>
-              <br /> Darmin Tarasewicz
-              <br /> Torrey Pines High School
-              <br /> 3710 Del Mar Heights Rd, San Diego, California, United
-              States 92130
-              <br /> +1 (619) 714 - 0293
-              <br /> saresearch25@gmail.com
-              <br />
-              <strong>PURPOSE OF STUDY</strong>
-              <br /> You are being asked to take part in a research study.
-              Before you decide to participate in this study, it is important
-              that you understand why the research is being done and what it
-              will involve. Please read the following information carefully.
-              Please ask the researcher if there is anything that is not clear
-              or if you need more information.
-              <br /> The purpose of this study is to investigate the differences
-              in attitude toward different immigrant groups in South Africa.
-              <br />
-              <strong>STUDY PROCEDURES</strong>
-              <br /> This study is optional and can be quit at any time. Any
-              data from incomplete surveys are not saved and will not be used in
-              the final paper. This study will ask optional demographic
-              questions, then will move on to questions where the
-              respondent will categorize certain words as either foreigner or
-              South African, and good or bad person.
-              <br />
-              <strong>RISKS</strong>
-              <br /> You may decline to answer any or all questions and you may
-              terminate your involvement at any time if you choose.
-              <br />
-              <strong>BENEFITS</strong> 
-              <br /> We hope that
-              the information obtained from this study may give insight into
-              attitudes towards different immigrant groups.
-              <br />
-              <strong>CONFIDENTIALITY</strong>
-              <br /> Your responses to this survey will be anonymous. Please do
-              not write any identifying information on your survey, or for the
-              purposes of this research study, your comments will not be
-              anonymous. Every effort will be made by the researcher to preserve
-              your confidentiality, including the following:
-              <br />
-              No names will be asked for in this survey. The only information
-              tied to you are optional demographic questions. All responses are
-              also locked behind a secured google account and cannot be accessed
-              by anyone except the researcher.
-              <br />
-              Participant data will be kept confidential except in cases where
-              the researcher is legally obligated to report specific incidents.
-              These incidents include, but may not be limited to, incidents of
-              abuse and suicide risk.
-              <br />
-              <strong>CONTACT INFORMATION</strong>
-              <br /> If you have questions at any time about this study, or you
-              experience adverse effects as the result of participating in this
-              study, you may contact the researcher whose contact information is
-              provided on the first page. If you have questions regarding your
-              rights as a research participant, or if problems arise which you
-              do not feel you can discuss with the Primary Investigator, please
-              contact Michael Montgomery at +1 (858) 755-0125, ext. 2137.
-              <br />
-              <strong>VOLUNTARY PARTICIPATION</strong>
-              <br /> Your participation in this study is voluntary. It is up to
-              you to decide whether or not to take part in this study. If you
-              decide to take part in this study, you will be asked to agree to
-              this consent form. After you agree to this consent form, you are
-              still free to withdraw at any time and without giving a reason.
-              Withdrawing from this study will not affect the relationship you
-              have, if any, with the researcher. If you withdraw from the study
-              before data collection is completed, your data will be returned to
-              you or destroyed.
-              <br />
-              <strong>CONSENT</strong>
-              <br /> I have read and I understand the provided information and
-              have had the opportunity to ask questions. I understand that my
-              participation is voluntary and that I am free to withdraw at any
-              time, without giving a reason and without cost. I voluntarily
-              agree to take part in this study.
+              {/* Consent details */}
             </p>
           </div>
         </div>
