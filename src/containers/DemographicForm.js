@@ -188,6 +188,7 @@ const DemographicForm = () => {
                 "Bangladeshi",
                 "Italian",
                 "British",
+                "Other",
               ].map((eth) => (
                 <option key={eth} value={eth}>
                   {eth}
@@ -241,6 +242,7 @@ const DemographicForm = () => {
                 "MK",
                 "UAT",
                 "UDM",
+                "Other",
               ].map((party) => (
                 <option key={party} value={party}>
                   {party}
