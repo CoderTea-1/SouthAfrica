@@ -10,15 +10,17 @@ const DemographicForm = () => {
 
   const [formData, setFormData] = useState({
     gender: "",
+    otherGender: "",
     age: "",
     education: "",
     city: "",
     ethnicity: "",
+    otherEthnicity: "",
     politicalAffiliation: "",
+    otherPoliticalAffiliation:"",
     income: "",
     consentProject: false,
     consentResearch: false,
-    otherGender: "", // Add a field for 'Other' gender input
   });
 
   const [errors, setErrors] = useState({});
@@ -192,6 +194,19 @@ const DemographicForm = () => {
                 </option>
               ))}
             </select>
+            {/* Show a textbox if "Other" is selected */}
+            {formData.ethnicity === "other" && (
+              <div>
+                <label htmlFor="otherEthnicity">Please specify:</label>
+                <input
+                  type="text"
+                  id="otherEthnicity"
+                  name="otherEthnicity"
+                  value={formData.otherEthnicity}
+                  onChange={handleChange}
+                />
+              </div>
+            )}
           </div>
         </div>
 
@@ -232,6 +247,19 @@ const DemographicForm = () => {
                 </option>
               ))}
             </select>
+            {/* Show a textbox if "Other" is selected */}
+            {formData.politicalAffiliation === "other" && (
+              <div>
+                <label htmlFor="otherPoliticalAffiliation">Please specify:</label>
+                <input
+                  type="text"
+                  id="otherPoliticalAffiliation"
+                  name="otherPoliticalAffiliation"
+                  value={formData.otherPoliticalAffiliation}
+                  onChange={handleChange}
+                />
+              </div>
+            )}
           </div>
         </div>
 
