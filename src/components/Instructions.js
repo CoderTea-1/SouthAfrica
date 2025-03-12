@@ -1,5 +1,5 @@
 import React from "react";
-
+//import KeyBoard from "./KeyBoard"
 import INPUT_KEYS from "../constants/InputKeys";
 import { toTitleCase } from "../formatters";
 
@@ -15,8 +15,8 @@ const getInstructionForSide = (currentBlockIndex, target, category, isLeft) => {
     const value = onlyTarget ? target : category;
     const styledValue = <span className={categoryOrTargetClass}>{value}</span>;
     return currentBlockIndex < 2 ? (
-      <p>
-        Put a {side} finger on the{" "}
+      <p className="my-4">
+        <strong> </strong> Put a {side} finger on the{" "}
         <a class="btn disabled">
           <strong>{inputKey}</strong>
         </a>{" "}
@@ -46,7 +46,7 @@ const getInstructionForSide = (currentBlockIndex, target, category, isLeft) => {
 };
 
 const getExtraInstruction = (currentBlockIndex, hasTargetAndCategory) => {
-  if (currentBlockIndex === 0) return <p>Items will appear one at a time.</p>;
+  if (currentBlockIndex === 0) return <p className="my-4">Items will appear one at a time.</p>;
   if (hasTargetAndCategory)
     return <p>'Each item belongs to only one category.</p>;
   return null;
@@ -77,30 +77,33 @@ export default function Instructions({
   );
 
   return (
-    <div>
-      {leftInstruction}
-      {rightInstruction}
-      {!!extraInstruction && extraInstruction}
+    <div className="mx-2 ">
+  {leftInstruction}
+  {rightInstruction}
+  {!!extraInstruction && extraInstruction}
+
+  <p className="my-4">
+    If you make a mistake, a red <span className="bold red-text">X</span> will
+    appear. Press the other key to continue.
+  </p>
+  <p className="mb-7">Go as fast as you can while being accurate.</p>
+
+  <div className="divider"></div>
+
+  <h4 className="header center red-text text-darken-4">Ready?</h4>
+
+  <div className="row center">
+    <h5>
       <p>
-        If you make a mistake, a red <span className="bold-red">X</span> will
-        appear. Press the other key to continue.
+        Press the{" "}
+        <a className="btn disabled">
+          <strong>{INPUT_KEYS.START_KEY}</strong>
+        </a>{" "}
+        when you are ready to start.
       </p>
-      <p>Go as fast as you can while being accurate.</p>
-      <div class="divider"></div>
-      <h4 class="header center red-text text-darken-4">Ready?</h4>
-      <div class="row center">
-        <h5>
-          {" "}
-          <p>
-            Press the{" "}
-            <a class="btn disabled">
-              {" "}
-              <strong>{INPUT_KEYS.START_KEY}</strong>
-            </a>{" "}
-            when you are ready to start.
-          </p>
-        </h5>
-      </div>
-    </div>
+    </h5>
+  </div>
+</div>
+
   );
 }
