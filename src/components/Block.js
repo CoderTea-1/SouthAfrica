@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-//import KeyBoard from "./KeyBoard"
+
 import ActiveTest from "./ActiveTest";
 import BlockStart from "./BlockStart";
 import TargetAndOrCategory from "./TargetAndOrCategory";
@@ -23,13 +23,9 @@ const Block = ({ test, currentTest, dispatchStartBlock }) => {
           <h6>Press "{INPUT_KEYS.LEFT}" for</h6>
           <TargetAndOrCategory target={leftTarget} category={leftCategory} />
         </div>
-        
         <div className="right-selection-group">
           <h6>Press "{INPUT_KEYS.RIGHT}" for</h6>
           <TargetAndOrCategory target={rightTarget} category={rightCategory} />
-        </div>
-        <div className="">
-          
         </div>
       </section>
       {currentTest.blockStarted ? (

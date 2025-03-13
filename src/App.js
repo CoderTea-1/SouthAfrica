@@ -10,7 +10,7 @@ import DemographicForm from "./containers/DemographicForm";
 export default function App() {
   return (
     <Router>
-      <div className="m-10">
+      <div className="nav-and-content">
         <Switch>
           <Route path={`/test/:testId`}>
             <ImplicitBiasTest />

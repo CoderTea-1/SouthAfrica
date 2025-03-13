@@ -231,7 +231,7 @@ class ActiveTest extends React.Component {
           {toTitleCase(valueToDisplay)}
         </div>
         <div className="incorrect-key-x">{incorrectKeyPressed && "X"}</div>
-        <p className="text-center">
+        <p>
           If you make a mistake, a red <span className="bold-red">X</span> will
           appear. Press the other key to continue.
         </p>

@@ -112,8 +112,8 @@ class Results extends Component {
     const resultStatement = getResultStatement(bias, test);
     console.log("results on results.js ", results);
     return (
-      <div className="text-center">
-        <h2 >Results</h2>
+      <div>
+        <h2>Results</h2>
         {resultStatement}
       </div>
     );
